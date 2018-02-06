@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
 
+if [ -z "${NODE_APP_PREFIX}" ]; then
+  app_folder="${1:-}"
+else
+  app_folder="${1:-}/$NODE_APP_PREFIX"
+fi
+
 # look for tsc configuration file
-if [ -f $1/tsconfig.json ]; then
+if [ -f $app_folder/tsconfig.json ]; then
   echo "TypeScript"
   exit 0
 fi

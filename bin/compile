@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 
-BUILD_DIR=${1:-}
+if [ -z "${NODE_APP_PREFIX}" ]; then
+  app_folder="${1:-}"
+else
+  app_folder="${1:-}/$NODE_APP_PREFIX"
+fi
+
+BUILD_DIR=$app_folder
 CACHE_DIR=${2:-}
 ENV_DIR=${3:-}
 BP_DIR=$(cd $(dirname ${0:-}); cd ..; pwd)
