@@ -55,7 +55,9 @@ header "Installing build dependencies"
 build_dependencies | output $LOG_FILE
 
 header "Building application with tsc $($TSC --version | sed 's/Version //')"
-compile_ts "$BUILD_DIR" "$TSC_CONFIG_PATH" | output $LOG_FILE
+# compile_ts "$BUILD_DIR" "$TSC_CONFIG_PATH" | output $LOG_FILE
+cd $BUILD_DIR
+npm run build
 if [ $? == "0" ]; then
     header "Build succeeded!"
 else
